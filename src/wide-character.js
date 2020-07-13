@@ -76,11 +76,7 @@ export const wideCharacterFont = function(
     wideChar: string,
     mode: Mode,
 ): [string, string] {
-
-    // IE doesn't support codePointAt(). So work with the surrogate pair.
-    const H = wideChar.charCodeAt(0);    // high surrogate
-    const L = wideChar.charCodeAt(1);    // low surrogate
-    const codePoint = ((H - 0xD800) * 0x400) + (L - 0xDC00) + 0x10000;
+    const codePoint = wideChar.codePointAt(0);
 
     const j = mode === "math" ? 0 : 1;  // column index for CSS class.
 
