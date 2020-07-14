@@ -418,11 +418,11 @@ function takeScreenshot(key) {
             .then(checkErrors);
     }
 
-    function checkErrors(){
+    function checkErrors() {
         driver.log("browser").then(function(results) {
             console.log(results.value);
             waitThenScreenshot();
-        }
+        });
     }
 
     function waitThenScreenshot() {
