@@ -255,7 +255,10 @@ function buildDriver() {
         html = "data:text/html," + encodeURIComponent(html);
         return driver.get(html);
     }).then(function() {
-        setSize(targetW, targetH);
+        driver.executeScript("return navigator.userAgent;").then(function(result) {
+            console.log(result);
+            setSize(targetW, targetH);
+        });
     });
 }
 
