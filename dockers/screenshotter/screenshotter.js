@@ -415,7 +415,14 @@ function takeScreenshot(key) {
         driver.executeAsyncScript(
                 "var callback = arguments[arguments.length - 1]; " +
                 "load_fonts(callback);")
-            .then(waitThenScreenshot);
+            .then(checkErrors);
+    }
+
+    function checkErrors(){
+        driver.log("browser").then(function(results) {
+            console.log(results.value);
+            waitThenScreenshot();
+        }
     }
 
     function waitThenScreenshot() {
